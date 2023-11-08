@@ -5,7 +5,7 @@ const movie = [
         year: 1994,
         genre: "Drama",
         rating: 9.3,
-        type: "movie",
+        type: "film",
         price: 3.99,
     },
     {
@@ -13,7 +13,7 @@ const movie = [
         year: 2008,
         genre: "Crime, Drama, Thriller",
         rating: 9.5,
-        type: "tv",
+        type: "Serietv",
         seasons: 5,
         price: 3.99,
     },
@@ -22,7 +22,7 @@ const movie = [
         year: 2010,
         genre: "Action, Adventure, Sci-Fi",
         rating: 8.8,
-        type: "movie",
+        type: "film",
         price: 3.99,
     },
     {
@@ -30,7 +30,7 @@ const movie = [
         year: 2016,
         genre: "Drama, Fantasy, Horror",
         rating: 8.7,
-        type: "tv",
+        type: "Serietv",
         seasons: 4,
         price: 3.99,
     },
@@ -56,8 +56,10 @@ class Movie {
         this.price = price;
     }
 
-
-
+    /*Entrambe le classi dovranno avere un metodo toString() che ritorni una stringa con i dati del film */
+    toString() {
+        return `${this.title} è un ${this.type} di genere ${this.genre}.E' stato rilasciato nel${this.year} ha un voto di ${this.rating} e il prezzo del noleggio è di ${this.price}`
+    }
 }
 /* Creare una classe TvSeries che estenda la classe Movie e ne aggiunta la proprietà seasons.*/
 
@@ -69,5 +71,12 @@ class TvSeries extends Movie {
         super(title, year, genre, rating, type, price);
         this.seasons = seasons;
     }
+    /*Entrambe le classi dovranno avere un metodo toString() che ritorni una stringa con i dati del film */
+    toString() {
+        return `${this.title} è un ${this.type} di genere ${this.genre}.E' stato rilasciato nel${this.year} ha un voto di ${this.rating} e il prezzo del noleggio è di ${this.price}`
+    }
 }
 
+/*Stampo in console */
+
+console.log(toString());
