@@ -39,12 +39,12 @@ const movie = [
 /*Creare una classe Movie che contenga le informazioni sopra indicate. */
 
 class Movie {
-    title;
-    year;
-    genre;
-    rating;
-    type;
-    price;
+    #title;
+    #year;
+    #genre;
+    #rating;
+    #type;
+    #price;
 
     /*constructor*/
     constructor(title, year, genre, rating, type, price) {
@@ -53,7 +53,50 @@ class Movie {
         this.genre = genre;
         this.rating = rating;
         this.type = type;
-        this.price = price;
+
+    }
+
+
+    /*getter */
+    get title() {
+        return this.#title
+    }
+    get year() {
+        return this.#year
+    }
+    get genre() {
+        return this.#genre
+    }
+
+    get rating() {
+        return this.#rating
+    }
+    get type() {
+        return this.#type
+    }
+    get price() {
+        return this.#price
+    }
+
+
+    /*setter */
+    set title(value) {
+        this.#title = value;
+    }
+    set year(value) {
+        this.#year = value;
+    }
+    set genre(value) {
+        this.#genre = value;
+    }
+    set rating(value) {
+        this.#rating = value;
+    }
+    set type(value) {
+        this.#type = value;
+    }
+    set price(value) {
+        this.#price = value;
     }
 
     /*Entrambe le classi dovranno avere un metodo toString() che ritorni una stringa con i dati del film */
@@ -64,13 +107,25 @@ class Movie {
 /* Creare una classe TvSeries che estenda la classe Movie e ne aggiunta la proprietà seasons.*/
 
 class TvSeries extends Movie {
-    seasons;
+    #seasons;
 
     /*Constructor con super per prendere dati da padre  */
     constructor(title, year, genre, rating, type, price, seasons) {
         super(title, year, genre, rating, type, price);
         this.seasons = seasons;
     }
+
+    /*getter */
+    get seasons() {
+        return this.#seasons
+    }
+
+
+    /*setter */
+    set seasons(value) {
+        this.#seasons = value;
+    }
+
     /*Entrambe le classi dovranno avere un metodo toString() che ritorni una stringa con i dati del film */
     toString() {
         console.log(`${this.title} è un ${this.type} di genere ${this.genre}.E' stato rilasciato nel ${this.year} ha un voto di ${this.rating} e il prezzo del noleggio è di ${this.price}`);
