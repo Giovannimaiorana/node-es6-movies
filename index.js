@@ -11,7 +11,7 @@ const movie = [
     {
         title: "Breaking Bad",
         year: 2008,
-        genre: "Crime, Drama, Thriller",
+        genre: "Crime",
         rating: 9.5,
         type: "Serietv",
         seasons: 5,
@@ -20,7 +20,7 @@ const movie = [
     {
         title: "Inception",
         year: 2010,
-        genre: "Action, Adventure, Sci-Fi",
+        genre: "Action",
         rating: 8.8,
         type: "film",
         price: 3.99,
@@ -28,7 +28,7 @@ const movie = [
     {
         title: "Stranger Things",
         year: 2016,
-        genre: "Drama, Fantasy, Horror",
+        genre: "Horror",
         rating: 8.7,
         type: "Serietv",
         seasons: 4,
@@ -93,7 +93,7 @@ const mappedArray = movie.map(item => {
     }
 });
 
-//console.log(mappedArray);
+console.log(mappedArray);
 
 /*Creiamo una funzione che restituisca la media dei voti di tutti i film per un determinato genere. Prevedere un argomento per la lista dei film ed uno per il genere. */
 
@@ -110,3 +110,27 @@ function mediaRaiting(listaFilm) {
 const mediaVotiDiTuttiIFilm = mediaRaiting(mappedArray);
 
 console.log(`La media dei voti di tutti i film è: ${mediaVotiDiTuttiIFilm}`);
+
+/*Creiamo una funzione che restituisca la lista di tutti i generi dei film, senza che questi si ripetano. */
+
+function uniqueGenre(listaFilm) {
+    const generiUnici = [];
+
+    listaFilm.forEach(film => {
+        const generiFilm = film.genre.split(', ').map(genere => genere.toLowerCase());
+
+        generiFilm.forEach(genere => {
+            if (!generiUnici.includes(genere)) {
+                generiUnici.push(genere);
+            }
+        });
+    });
+
+    return generiUnici;
+}
+
+const generiUniciDeiFilm = uniqueGenre(mappedArray);
+
+console.log("Generi unici dei film:", generiUniciDeiFilm);
+
+/*Creiamo una funzione che filtri i film in base ad un genere passato come argomento e ne ritorni un array con all’interno il risultato della funzione toString() di ogni film.*/
