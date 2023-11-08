@@ -73,12 +73,24 @@ class TvSeries extends Movie {
     }
     /*Entrambe le classi dovranno avere un metodo toString() che ritorni una stringa con i dati del film */
     toString() {
-        return `${this.title} è un ${this.type} di genere ${this.genre}.E' stato rilasciato nel ${this.year} ha un voto di ${this.rating} e il prezzo del noleggio è di ${this.price}`
+        console.log(`${this.title} è un ${this.type} di genere ${this.genre}.E' stato rilasciato nel ${this.year} ha un voto di ${this.rating} e il prezzo del noleggio è di ${this.price}`);
     }
-}
+};
 
 /*istanza */
 const film = new Movie("The Shawshank Redemption", 2010, "horror", 8.8, "film", 3.99)
-console.log(film.toString());
+//console.log(film.toString());
 const serieTv = new TvSeries("Stranger Things", 2018, "horror", 8.8, "serieTv", 3.99)
-console.log(serieTv.toString());
+//console.log(serieTv.toString());
+
+/* Tramite la funzione .map(), creare un nuovo array dove per ogni elemento dell’array di oggetti viene creata un istanza della classe Movie o TvSerie in base al type e salvata nel nuovo array.*/
+
+const mappedArray = movie.map(item => {
+    if (item.type.toLowerCase() === 'film') {
+        return new Movie(item.title, item.year, item.genre, item.rating, item.type, item.price);
+    } else if (item.type.toLowerCase() === 'serietv') {
+        return new TvSeries(item.title, item.year, item.genre, item.rating, item.type, item.price, item.seasons);
+    }
+});
+
+console.log(mappedArray);
