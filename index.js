@@ -93,4 +93,20 @@ const mappedArray = movie.map(item => {
     }
 });
 
-console.log(mappedArray);
+//console.log(mappedArray);
+
+/*Creiamo una funzione che restituisca la media dei voti di tutti i film per un determinato genere. Prevedere un argomento per la lista dei film ed uno per il genere. */
+
+function mediaRaiting(listaFilm) {
+    // Calcola la somma dei voti di tutti i film
+    const sommaVoti = listaFilm.reduce((acc, film) => acc + film.rating, 0);
+
+    // Calcola la media dei voti di tutti i film
+    const mediaVoti = sommaVoti / listaFilm.length;
+
+    return mediaVoti;
+}
+
+const mediaVotiDiTuttiIFilm = mediaRaiting(mappedArray);
+
+console.log(`La media dei voti di tutti i film è: ${mediaVotiDiTuttiIFilm}`);
