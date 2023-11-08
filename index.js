@@ -58,7 +58,7 @@ class Movie {
 
     /*Entrambe le classi dovranno avere un metodo toString() che ritorni una stringa con i dati del film */
     toString() {
-        return `${this.title} è un ${this.type} di genere ${this.genre}.E' stato rilasciato nel${this.year} ha un voto di ${this.rating} e il prezzo del noleggio è di ${this.price}`
+        return `${this.title} è un ${this.type} di genere ${this.genre}.E' stato rilasciato nel ${this.year} ha un voto di ${this.rating} e il prezzo del noleggio è di ${this.price}`
     }
 }
 /* Creare una classe TvSeries che estenda la classe Movie e ne aggiunta la proprietà seasons.*/
@@ -73,10 +73,12 @@ class TvSeries extends Movie {
     }
     /*Entrambe le classi dovranno avere un metodo toString() che ritorni una stringa con i dati del film */
     toString() {
-        return `${this.title} è un ${this.type} di genere ${this.genre}.E' stato rilasciato nel${this.year} ha un voto di ${this.rating} e il prezzo del noleggio è di ${this.price}`
+        return `${this.title} è un ${this.type} di genere ${this.genre}.E' stato rilasciato nel ${this.year} ha un voto di ${this.rating} e il prezzo del noleggio è di ${this.price}`
     }
 }
 
-/*Stampo in console */
-
-console.log(toString());
+/*istanza */
+const film = new Movie("The Shawshank Redemption", 2010, "horror", 8.8, "film", 3.99)
+console.log(film.toString());
+const serieTv = new TvSeries("Stranger Things", 2018, "horror", 8.8, "serieTv", 3.99)
+console.log(serieTv.toString());
