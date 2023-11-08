@@ -57,7 +57,7 @@ class Movie {
     }
 
 
-    /*getter */
+    /*getter class movie*/
     get title() {
         return this.#title
     }
@@ -79,7 +79,7 @@ class Movie {
     }
 
 
-    /*setter */
+    /*setter class  movie*/
     set title(value) {
         this.#title = value;
     }
@@ -115,13 +115,13 @@ class TvSeries extends Movie {
         this.seasons = seasons;
     }
 
-    /*getter */
+    /*getter class tvseries */
     get seasons() {
         return this.#seasons
     }
 
 
-    /*setter */
+    /*setter class tvseries*/
     set seasons(value) {
         this.#seasons = value;
     }
@@ -152,19 +152,33 @@ console.log(mappedArray);
 
 /*Creiamo una funzione che restituisca la media dei voti di tutti i film per un determinato genere. Prevedere un argomento per la lista dei film ed uno per il genere. */
 
-function mediaRaiting(listaFilm) {
-    // Calcola la somma dei voti di tutti i film
-    const sommaVoti = listaFilm.reduce((acc, film) => acc + film.rating, 0);
+function mediaRaitingByGenre(listaFilm, genereCercato) {
+    // Filtra la lista dei film per il genere specificato
+    const filmByGenere = listaFilm.filter(film => film.genre.toLowerCase() === genereCercato.toLowerCase());
 
-    // Calcola la media dei voti di tutti i film
-    const mediaVoti = sommaVoti / listaFilm.length;
+    if (filmByGenere.length === 0) {
+        console.log(`Nessun film di genere ${genereCercato} trovato.`);
+        return 0;
+    }
+
+    // Calcola la somma dei voti dei film del genere specificato
+    const sommaVoti = filmByGenere.reduce((acc, film) => acc + film.rating, 0);
+
+    // Calcola la media dei voti dei film del genere specificato
+    const mediaVoti = sommaVoti / filmByGenere.length;
 
     return mediaVoti;
 }
 
-const mediaVotiDiTuttiIFilm = mediaRaiting(mappedArray);
+const searchGenre = "orror";
+const mediaVotiPerHorror = mediaRaitingByGenre(mappedArray, searchGenre);
 
-console.log(`La media dei voti di tutti i film è: ${mediaVotiDiTuttiIFilm}`);
+if (mediaVotiPerHorror === 0) {
+    console.log(`Nessun film di genere ${searchGenre} trovato.`);
+} else {
+    console.log(`La media dei voti dei film di genere ${searchGenre} è: ${mediaVotiPerHorror}`);
+}
+
 
 /*Creiamo una funzione che restituisca la lista di tutti i generi dei film, senza che questi si ripetano. */
 
@@ -187,4 +201,47 @@ function uniqueGenre(listaFilm) {
 const generiUniciDeiFilm = uniqueGenre(mappedArray);
 
 console.log("Generi unici dei film:", generiUniciDeiFilm);
+
+
+/* Creare una classe Cart dove poter salvare i film che si intende noleggiare. Tramite delle funzioni, poter aggiungere o togliere dei film dal carrello. Creare poi una funzione che stampi il costo totale dei film da noleggiare, dove per ogni film occorre specificare un prezzo fisso di 3.99*/
+
+class Cart {
+    #items
+
+    constructor() {
+        this.#items = [];
+    }
+
+    //aggiungi film al carrello
+    addMovie(movie) {
+        this.#items.push(movie);
+    }
+    // Calcola il costo totale dei film da noleggiare
+    calculateTotalCost() {
+        const fixedPrice = 3.99;
+        const totalCost = this.#items.length * fixedPrice;
+        return totalCost;
+    }
+
+    // Visualizza i film nel carrello
+    viewCart() {
+        console.log("Film nel carrello:");
+        for (const movie of this.#items) {
+            console.log(movie.title);
+        }
+    }
+
+}
+
+const cart = new Cart();
+
+// Aggiungo film al carrello
+cart.addMovie(film);
+cart.addMovie(serieTv);
+
+cart.viewCart();
+
+const totalCost = cart.calculateTotalCost();
+console.log(`Costo totale del noleggio: $${totalCost}`);
+
 
